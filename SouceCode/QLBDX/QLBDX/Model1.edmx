@@ -1,0 +1,877 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="QLBaiDoXeModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="HoaDon">
+          <Key>
+            <PropertyRef Name="IDHoaDon" />
+          </Key>
+          <Property Name="IDHoaDon" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ThoiGian" Type="datetime" />
+          <Property Name="TongTien" Type="int" />
+          <Property Name="BienSoXe" Type="nvarchar" MaxLength="50" />
+          <Property Name="IDLoaiXe" Type="int" />
+          <Property Name="IDNhanVien" Type="nvarchar" MaxLength="50" />
+          <Property Name="IDTheGuiXe" Type="int" />
+          <Property Name="MoTa" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="LoaiThe">
+          <Key>
+            <PropertyRef Name="IDLoaiThe" />
+          </Key>
+          <Property Name="IDLoaiThe" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TenLoaiThe" Type="nvarchar(max)" />
+          <Property Name="MoTa" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="LoaiXe">
+          <Key>
+            <PropertyRef Name="IDLoaiXe" />
+          </Key>
+          <Property Name="IDLoaiXe" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TenLoaiXe" Type="nvarchar(max)" />
+          <Property Name="MoTa" Type="nvarchar(max)" />
+          <Property Name="DonGia" Type="int" />
+        </EntityType>
+        <EntityType Name="NhanVien">
+          <Key>
+            <PropertyRef Name="IDNhanVien" />
+          </Key>
+          <Property Name="IDNhanVien" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="MatKhau" Type="nvarchar(max)" />
+          <Property Name="HoTen" Type="nvarchar(max)" />
+          <Property Name="SDT" Type="nvarchar(max)" />
+          <Property Name="Email" Type="nvarchar(max)" />
+          <Property Name="SinhNhat" Type="date" />
+          <Property Name="DiaChi" Type="nvarchar(max)" />
+          <Property Name="IDQuyen" Type="int" />
+        </EntityType>
+        <EntityType Name="NhatKyRa">
+          <Key>
+            <PropertyRef Name="IDNhatKyRa" />
+          </Key>
+          <Property Name="IDNhatKyRa" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ThoiGian" Type="int" />
+          <Property Name="BienSoXe" Type="nvarchar" MaxLength="50" />
+          <Property Name="IDLoaiXe" Type="int" />
+          <Property Name="IDTheGuiXe" Type="int" />
+          <Property Name="IDNhanVien" Type="nvarchar" MaxLength="50" />
+          <Property Name="Urlanh" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="NhatKyVao">
+          <Key>
+            <PropertyRef Name="IDNhatKyVao" />
+          </Key>
+          <Property Name="IDNhatKyVao" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ThoiGian" Type="datetime" />
+          <Property Name="BienSoXe" Type="nvarchar" MaxLength="50" />
+          <Property Name="IDLoaiXe" Type="int" />
+          <Property Name="IDTheGuiXe" Type="int" />
+          <Property Name="IDNhanVien" Type="nvarchar" MaxLength="50" />
+          <Property Name="Urlanh" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Quyen">
+          <Key>
+            <PropertyRef Name="IDQuyen" />
+          </Key>
+          <Property Name="IDQuyen" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TenQuyen" Type="nvarchar(max)" />
+          <Property Name="MoTa" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="TheGuiXe">
+          <Key>
+            <PropertyRef Name="IDTheGuiXe" />
+          </Key>
+          <Property Name="IDTheGuiXe" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NgayCap" Type="date" />
+          <Property Name="NgayHetHan" Type="date" />
+          <Property Name="MoTa" Type="nvarchar(max)" />
+          <Property Name="DangSuDung" Type="bit" />
+          <Property Name="IDLoaiThe" Type="int" />
+        </EntityType>
+        <EntityType Name="XeThang">
+          <Key>
+            <PropertyRef Name="BienSo" />
+          </Key>
+          <Property Name="IDTheGuiXe" Type="int" Nullable="false" />
+          <Property Name="BienSo" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="NgayDangKy" Type="date" />
+          <Property Name="NgayHetHan" Type="date" />
+          <Property Name="UrlAnh" Type="nvarchar(max)" />
+          <Property Name="MoTa" Type="nvarchar(max)" />
+          <Property Name="TongTien" Type="int" />
+        </EntityType>
+        <EntityType Name="XeTrongBai">
+          <Key>
+            <PropertyRef Name="IDXeTrongBai" />
+          </Key>
+          <Property Name="IDXeTrongBai" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ThoiGianVao" Type="datetime" />
+          <Property Name="ThoiGianRa" Type="datetime" />
+          <Property Name="IDTheGuiXe" Type="int" />
+          <Property Name="IDLoaiXe" Type="int" />
+          <Property Name="UrlAnh" Type="nvarchar(max)" />
+        </EntityType>
+        <Association Name="FK_HoaDon_LoaiThe">
+          <End Role="LoaiThe" Type="Self.LoaiThe" Multiplicity="0..1" />
+          <End Role="HoaDon" Type="Self.HoaDon" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LoaiThe">
+              <PropertyRef Name="IDLoaiThe" />
+            </Principal>
+            <Dependent Role="HoaDon">
+              <PropertyRef Name="IDTheGuiXe" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HoaDon_LoaiXe">
+          <End Role="LoaiXe" Type="Self.LoaiXe" Multiplicity="0..1" />
+          <End Role="HoaDon" Type="Self.HoaDon" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LoaiXe">
+              <PropertyRef Name="IDLoaiXe" />
+            </Principal>
+            <Dependent Role="HoaDon">
+              <PropertyRef Name="IDLoaiXe" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HoaDon_NhanVien">
+          <End Role="NhanVien" Type="Self.NhanVien" Multiplicity="0..1" />
+          <End Role="HoaDon" Type="Self.HoaDon" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NhanVien">
+              <PropertyRef Name="IDNhanVien" />
+            </Principal>
+            <Dependent Role="HoaDon">
+              <PropertyRef Name="IDNhanVien" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NhatKyRa_LoaiXe">
+          <End Role="LoaiXe" Type="Self.LoaiXe" Multiplicity="0..1" />
+          <End Role="NhatKyRa" Type="Self.NhatKyRa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LoaiXe">
+              <PropertyRef Name="IDLoaiXe" />
+            </Principal>
+            <Dependent Role="NhatKyRa">
+              <PropertyRef Name="IDLoaiXe" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NhatKyRa_NhanVien">
+          <End Role="NhanVien" Type="Self.NhanVien" Multiplicity="0..1" />
+          <End Role="NhatKyRa" Type="Self.NhatKyRa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NhanVien">
+              <PropertyRef Name="IDNhanVien" />
+            </Principal>
+            <Dependent Role="NhatKyRa">
+              <PropertyRef Name="IDNhanVien" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NhatKyRa_TheGuiXe">
+          <End Role="TheGuiXe" Type="Self.TheGuiXe" Multiplicity="0..1" />
+          <End Role="NhatKyRa" Type="Self.NhatKyRa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TheGuiXe">
+              <PropertyRef Name="IDTheGuiXe" />
+            </Principal>
+            <Dependent Role="NhatKyRa">
+              <PropertyRef Name="IDTheGuiXe" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NhatKyVao_LoaiXe">
+          <End Role="LoaiXe" Type="Self.LoaiXe" Multiplicity="0..1" />
+          <End Role="NhatKyVao" Type="Self.NhatKyVao" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LoaiXe">
+              <PropertyRef Name="IDLoaiXe" />
+            </Principal>
+            <Dependent Role="NhatKyVao">
+              <PropertyRef Name="IDLoaiXe" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NhatKyVao_NhanVien">
+          <End Role="NhanVien" Type="Self.NhanVien" Multiplicity="0..1" />
+          <End Role="NhatKyVao" Type="Self.NhatKyVao" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NhanVien">
+              <PropertyRef Name="IDNhanVien" />
+            </Principal>
+            <Dependent Role="NhatKyVao">
+              <PropertyRef Name="IDNhanVien" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NhatKyVao_TheGuiXe">
+          <End Role="TheGuiXe" Type="Self.TheGuiXe" Multiplicity="0..1" />
+          <End Role="NhatKyVao" Type="Self.NhatKyVao" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TheGuiXe">
+              <PropertyRef Name="IDTheGuiXe" />
+            </Principal>
+            <Dependent Role="NhatKyVao">
+              <PropertyRef Name="IDTheGuiXe" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TheGuiXe_LoaiThe">
+          <End Role="LoaiThe" Type="Self.LoaiThe" Multiplicity="0..1" />
+          <End Role="TheGuiXe" Type="Self.TheGuiXe" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LoaiThe">
+              <PropertyRef Name="IDLoaiThe" />
+            </Principal>
+            <Dependent Role="TheGuiXe">
+              <PropertyRef Name="IDLoaiThe" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_XeThang_TheGuiXe">
+          <End Role="TheGuiXe" Type="Self.TheGuiXe" Multiplicity="1" />
+          <End Role="XeThang" Type="Self.XeThang" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TheGuiXe">
+              <PropertyRef Name="IDTheGuiXe" />
+            </Principal>
+            <Dependent Role="XeThang">
+              <PropertyRef Name="IDTheGuiXe" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_XeTrongBai_LoaiXe">
+          <End Role="LoaiXe" Type="Self.LoaiXe" Multiplicity="0..1" />
+          <End Role="XeTrongBai" Type="Self.XeTrongBai" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LoaiXe">
+              <PropertyRef Name="IDLoaiXe" />
+            </Principal>
+            <Dependent Role="XeTrongBai">
+              <PropertyRef Name="IDLoaiXe" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_XeTrongBai_TheGuiXe">
+          <End Role="TheGuiXe" Type="Self.TheGuiXe" Multiplicity="0..1" />
+          <End Role="XeTrongBai" Type="Self.XeTrongBai" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TheGuiXe">
+              <PropertyRef Name="IDTheGuiXe" />
+            </Principal>
+            <Dependent Role="XeTrongBai">
+              <PropertyRef Name="IDTheGuiXe" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="QLBaiDoXeModelStoreContainer">
+          <EntitySet Name="HoaDon" EntityType="Self.HoaDon" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LoaiThe" EntityType="Self.LoaiThe" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LoaiXe" EntityType="Self.LoaiXe" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NhanVien" EntityType="Self.NhanVien" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NhatKyRa" EntityType="Self.NhatKyRa" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NhatKyVao" EntityType="Self.NhatKyVao" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Quyen" EntityType="Self.Quyen" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TheGuiXe" EntityType="Self.TheGuiXe" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="XeThang" EntityType="Self.XeThang" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="XeTrongBai" EntityType="Self.XeTrongBai" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_HoaDon_LoaiThe" Association="Self.FK_HoaDon_LoaiThe">
+            <End Role="LoaiThe" EntitySet="LoaiThe" />
+            <End Role="HoaDon" EntitySet="HoaDon" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HoaDon_LoaiXe" Association="Self.FK_HoaDon_LoaiXe">
+            <End Role="LoaiXe" EntitySet="LoaiXe" />
+            <End Role="HoaDon" EntitySet="HoaDon" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HoaDon_NhanVien" Association="Self.FK_HoaDon_NhanVien">
+            <End Role="NhanVien" EntitySet="NhanVien" />
+            <End Role="HoaDon" EntitySet="HoaDon" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NhatKyRa_LoaiXe" Association="Self.FK_NhatKyRa_LoaiXe">
+            <End Role="LoaiXe" EntitySet="LoaiXe" />
+            <End Role="NhatKyRa" EntitySet="NhatKyRa" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NhatKyRa_NhanVien" Association="Self.FK_NhatKyRa_NhanVien">
+            <End Role="NhanVien" EntitySet="NhanVien" />
+            <End Role="NhatKyRa" EntitySet="NhatKyRa" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NhatKyRa_TheGuiXe" Association="Self.FK_NhatKyRa_TheGuiXe">
+            <End Role="TheGuiXe" EntitySet="TheGuiXe" />
+            <End Role="NhatKyRa" EntitySet="NhatKyRa" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NhatKyVao_LoaiXe" Association="Self.FK_NhatKyVao_LoaiXe">
+            <End Role="LoaiXe" EntitySet="LoaiXe" />
+            <End Role="NhatKyVao" EntitySet="NhatKyVao" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NhatKyVao_NhanVien" Association="Self.FK_NhatKyVao_NhanVien">
+            <End Role="NhanVien" EntitySet="NhanVien" />
+            <End Role="NhatKyVao" EntitySet="NhatKyVao" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NhatKyVao_TheGuiXe" Association="Self.FK_NhatKyVao_TheGuiXe">
+            <End Role="TheGuiXe" EntitySet="TheGuiXe" />
+            <End Role="NhatKyVao" EntitySet="NhatKyVao" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TheGuiXe_LoaiThe" Association="Self.FK_TheGuiXe_LoaiThe">
+            <End Role="LoaiThe" EntitySet="LoaiThe" />
+            <End Role="TheGuiXe" EntitySet="TheGuiXe" />
+          </AssociationSet>
+          <AssociationSet Name="FK_XeThang_TheGuiXe" Association="Self.FK_XeThang_TheGuiXe">
+            <End Role="TheGuiXe" EntitySet="TheGuiXe" />
+            <End Role="XeThang" EntitySet="XeThang" />
+          </AssociationSet>
+          <AssociationSet Name="FK_XeTrongBai_LoaiXe" Association="Self.FK_XeTrongBai_LoaiXe">
+            <End Role="LoaiXe" EntitySet="LoaiXe" />
+            <End Role="XeTrongBai" EntitySet="XeTrongBai" />
+          </AssociationSet>
+          <AssociationSet Name="FK_XeTrongBai_TheGuiXe" Association="Self.FK_XeTrongBai_TheGuiXe">
+            <End Role="TheGuiXe" EntitySet="TheGuiXe" />
+            <End Role="XeTrongBai" EntitySet="XeTrongBai" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="QLBaiDoXeModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="QLBaiDoXeEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="HoaDons" EntityType="QLBaiDoXeModel.HoaDon" />
+          <EntitySet Name="LoaiThes" EntityType="QLBaiDoXeModel.LoaiThe" />
+          <EntitySet Name="LoaiXes" EntityType="QLBaiDoXeModel.LoaiXe" />
+          <EntitySet Name="NhanViens" EntityType="QLBaiDoXeModel.NhanVien" />
+          <EntitySet Name="NhatKyRas" EntityType="QLBaiDoXeModel.NhatKyRa" />
+          <EntitySet Name="NhatKyVaos" EntityType="QLBaiDoXeModel.NhatKyVao" />
+          <EntitySet Name="sysdiagrams" EntityType="QLBaiDoXeModel.sysdiagram" />
+          <EntitySet Name="TheGuiXes" EntityType="QLBaiDoXeModel.TheGuiXe" />
+          <EntitySet Name="XeThangs" EntityType="QLBaiDoXeModel.XeThang" />
+          <EntitySet Name="XeTrongBais" EntityType="QLBaiDoXeModel.XeTrongBai" />
+          <AssociationSet Name="FK_HoaDon_LoaiThe" Association="QLBaiDoXeModel.FK_HoaDon_LoaiThe">
+            <End Role="LoaiThe" EntitySet="LoaiThes" />
+            <End Role="HoaDon" EntitySet="HoaDons" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HoaDon_LoaiXe" Association="QLBaiDoXeModel.FK_HoaDon_LoaiXe">
+            <End Role="LoaiXe" EntitySet="LoaiXes" />
+            <End Role="HoaDon" EntitySet="HoaDons" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HoaDon_NhanVien" Association="QLBaiDoXeModel.FK_HoaDon_NhanVien">
+            <End Role="NhanVien" EntitySet="NhanViens" />
+            <End Role="HoaDon" EntitySet="HoaDons" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TheGuiXe_LoaiThe" Association="QLBaiDoXeModel.FK_TheGuiXe_LoaiThe">
+            <End Role="LoaiThe" EntitySet="LoaiThes" />
+            <End Role="TheGuiXe" EntitySet="TheGuiXes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NhatKyRa_LoaiXe" Association="QLBaiDoXeModel.FK_NhatKyRa_LoaiXe">
+            <End Role="LoaiXe" EntitySet="LoaiXes" />
+            <End Role="NhatKyRa" EntitySet="NhatKyRas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NhatKyVao_LoaiXe" Association="QLBaiDoXeModel.FK_NhatKyVao_LoaiXe">
+            <End Role="LoaiXe" EntitySet="LoaiXes" />
+            <End Role="NhatKyVao" EntitySet="NhatKyVaos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_XeTrongBai_LoaiXe" Association="QLBaiDoXeModel.FK_XeTrongBai_LoaiXe">
+            <End Role="LoaiXe" EntitySet="LoaiXes" />
+            <End Role="XeTrongBai" EntitySet="XeTrongBais" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NhatKyRa_NhanVien" Association="QLBaiDoXeModel.FK_NhatKyRa_NhanVien">
+            <End Role="NhanVien" EntitySet="NhanViens" />
+            <End Role="NhatKyRa" EntitySet="NhatKyRas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NhatKyVao_NhanVien" Association="QLBaiDoXeModel.FK_NhatKyVao_NhanVien">
+            <End Role="NhanVien" EntitySet="NhanViens" />
+            <End Role="NhatKyVao" EntitySet="NhatKyVaos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NhatKyRa_TheGuiXe" Association="QLBaiDoXeModel.FK_NhatKyRa_TheGuiXe">
+            <End Role="TheGuiXe" EntitySet="TheGuiXes" />
+            <End Role="NhatKyRa" EntitySet="NhatKyRas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NhatKyVao_TheGuiXe" Association="QLBaiDoXeModel.FK_NhatKyVao_TheGuiXe">
+            <End Role="TheGuiXe" EntitySet="TheGuiXes" />
+            <End Role="NhatKyVao" EntitySet="NhatKyVaos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_XeThang_TheGuiXe" Association="QLBaiDoXeModel.FK_XeThang_TheGuiXe">
+            <End Role="TheGuiXe" EntitySet="TheGuiXes" />
+            <End Role="XeThang" EntitySet="XeThangs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_XeTrongBai_TheGuiXe" Association="QLBaiDoXeModel.FK_XeTrongBai_TheGuiXe">
+            <End Role="TheGuiXe" EntitySet="TheGuiXes" />
+            <End Role="XeTrongBai" EntitySet="XeTrongBais" />
+          </AssociationSet>
+          <EntitySet Name="Quyens" EntityType="QLBaiDoXeModel.Quyen" />
+        </EntityContainer>
+        <EntityType Name="HoaDon">
+          <Key>
+            <PropertyRef Name="IDHoaDon" />
+          </Key>
+          <Property Name="IDHoaDon" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ThoiGian" Type="DateTime" Precision="3" />
+          <Property Name="TongTien" Type="Int32" />
+          <Property Name="BienSoXe" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IDLoaiXe" Type="Int32" />
+          <Property Name="IDNhanVien" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IDTheGuiXe" Type="Int32" />
+          <Property Name="MoTa" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="LoaiThe" Relationship="QLBaiDoXeModel.FK_HoaDon_LoaiThe" FromRole="HoaDon" ToRole="LoaiThe" />
+          <NavigationProperty Name="LoaiXe" Relationship="QLBaiDoXeModel.FK_HoaDon_LoaiXe" FromRole="HoaDon" ToRole="LoaiXe" />
+          <NavigationProperty Name="NhanVien" Relationship="QLBaiDoXeModel.FK_HoaDon_NhanVien" FromRole="HoaDon" ToRole="NhanVien" />
+        </EntityType>
+        <EntityType Name="LoaiThe">
+          <Key>
+            <PropertyRef Name="IDLoaiThe" />
+          </Key>
+          <Property Name="IDLoaiThe" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TenLoaiThe" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="MoTa" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="HoaDons" Relationship="QLBaiDoXeModel.FK_HoaDon_LoaiThe" FromRole="LoaiThe" ToRole="HoaDon" />
+          <NavigationProperty Name="TheGuiXes" Relationship="QLBaiDoXeModel.FK_TheGuiXe_LoaiThe" FromRole="LoaiThe" ToRole="TheGuiXe" />
+        </EntityType>
+        <EntityType Name="LoaiXe">
+          <Key>
+            <PropertyRef Name="IDLoaiXe" />
+          </Key>
+          <Property Name="IDLoaiXe" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TenLoaiXe" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="MoTa" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DonGia" Type="Int32" />
+          <NavigationProperty Name="HoaDons" Relationship="QLBaiDoXeModel.FK_HoaDon_LoaiXe" FromRole="LoaiXe" ToRole="HoaDon" />
+          <NavigationProperty Name="NhatKyRas" Relationship="QLBaiDoXeModel.FK_NhatKyRa_LoaiXe" FromRole="LoaiXe" ToRole="NhatKyRa" />
+          <NavigationProperty Name="NhatKyVaos" Relationship="QLBaiDoXeModel.FK_NhatKyVao_LoaiXe" FromRole="LoaiXe" ToRole="NhatKyVao" />
+          <NavigationProperty Name="XeTrongBais" Relationship="QLBaiDoXeModel.FK_XeTrongBai_LoaiXe" FromRole="LoaiXe" ToRole="XeTrongBai" />
+        </EntityType>
+        <EntityType Name="NhanVien">
+          <Key>
+            <PropertyRef Name="IDNhanVien" />
+          </Key>
+          <Property Name="IDNhanVien" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MatKhau" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="HoTen" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SDT" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SinhNhat" Type="DateTime" Precision="0" />
+          <Property Name="DiaChi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="HoaDons" Relationship="QLBaiDoXeModel.FK_HoaDon_NhanVien" FromRole="NhanVien" ToRole="HoaDon" />
+          <NavigationProperty Name="NhatKyRas" Relationship="QLBaiDoXeModel.FK_NhatKyRa_NhanVien" FromRole="NhanVien" ToRole="NhatKyRa" />
+          <NavigationProperty Name="NhatKyVaos" Relationship="QLBaiDoXeModel.FK_NhatKyVao_NhanVien" FromRole="NhanVien" ToRole="NhatKyVao" />
+          <Property Name="IDQuyen" Type="Int32" />
+        </EntityType>
+        <EntityType Name="NhatKyRa">
+          <Key>
+            <PropertyRef Name="IDNhatKyRa" />
+          </Key>
+          <Property Name="IDNhatKyRa" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ThoiGian" Type="Int32" />
+          <Property Name="BienSoXe" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IDLoaiXe" Type="Int32" />
+          <Property Name="IDTheGuiXe" Type="Int32" />
+          <Property Name="IDNhanVien" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Urlanh" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="LoaiXe" Relationship="QLBaiDoXeModel.FK_NhatKyRa_LoaiXe" FromRole="NhatKyRa" ToRole="LoaiXe" />
+          <NavigationProperty Name="NhanVien" Relationship="QLBaiDoXeModel.FK_NhatKyRa_NhanVien" FromRole="NhatKyRa" ToRole="NhanVien" />
+          <NavigationProperty Name="TheGuiXe" Relationship="QLBaiDoXeModel.FK_NhatKyRa_TheGuiXe" FromRole="NhatKyRa" ToRole="TheGuiXe" />
+        </EntityType>
+        <EntityType Name="NhatKyVao">
+          <Key>
+            <PropertyRef Name="IDNhatKyVao" />
+          </Key>
+          <Property Name="IDNhatKyVao" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ThoiGian" Type="DateTime" Precision="3" />
+          <Property Name="BienSoXe" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IDLoaiXe" Type="Int32" />
+          <Property Name="IDTheGuiXe" Type="Int32" />
+          <Property Name="IDNhanVien" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Urlanh" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="LoaiXe" Relationship="QLBaiDoXeModel.FK_NhatKyVao_LoaiXe" FromRole="NhatKyVao" ToRole="LoaiXe" />
+          <NavigationProperty Name="NhanVien" Relationship="QLBaiDoXeModel.FK_NhatKyVao_NhanVien" FromRole="NhatKyVao" ToRole="NhanVien" />
+          <NavigationProperty Name="TheGuiXe" Relationship="QLBaiDoXeModel.FK_NhatKyVao_TheGuiXe" FromRole="NhatKyVao" ToRole="TheGuiXe" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="TheGuiXe">
+          <Key>
+            <PropertyRef Name="IDTheGuiXe" />
+          </Key>
+          <Property Name="IDTheGuiXe" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NgayCap" Type="DateTime" Precision="0" />
+          <Property Name="NgayHetHan" Type="DateTime" Precision="0" />
+          <Property Name="MoTa" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DangSuDung" Type="Boolean" />
+          <Property Name="IDLoaiThe" Type="Int32" />
+          <NavigationProperty Name="LoaiThe" Relationship="QLBaiDoXeModel.FK_TheGuiXe_LoaiThe" FromRole="TheGuiXe" ToRole="LoaiThe" />
+          <NavigationProperty Name="NhatKyRas" Relationship="QLBaiDoXeModel.FK_NhatKyRa_TheGuiXe" FromRole="TheGuiXe" ToRole="NhatKyRa" />
+          <NavigationProperty Name="NhatKyVaos" Relationship="QLBaiDoXeModel.FK_NhatKyVao_TheGuiXe" FromRole="TheGuiXe" ToRole="NhatKyVao" />
+          <NavigationProperty Name="XeThangs" Relationship="QLBaiDoXeModel.FK_XeThang_TheGuiXe" FromRole="TheGuiXe" ToRole="XeThang" />
+          <NavigationProperty Name="XeTrongBais" Relationship="QLBaiDoXeModel.FK_XeTrongBai_TheGuiXe" FromRole="TheGuiXe" ToRole="XeTrongBai" />
+        </EntityType>
+        <EntityType Name="XeThang">
+          <Key>
+            <PropertyRef Name="BienSo" />
+          </Key>
+          <Property Name="IDTheGuiXe" Type="Int32" Nullable="false" />
+          <Property Name="BienSo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NgayDangKy" Type="DateTime" Precision="0" />
+          <Property Name="NgayHetHan" Type="DateTime" Precision="0" />
+          <Property Name="UrlAnh" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="MoTa" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="TongTien" Type="Int32" />
+          <NavigationProperty Name="TheGuiXe" Relationship="QLBaiDoXeModel.FK_XeThang_TheGuiXe" FromRole="XeThang" ToRole="TheGuiXe" />
+        </EntityType>
+        <EntityType Name="XeTrongBai">
+          <Key>
+            <PropertyRef Name="IDXeTrongBai" />
+          </Key>
+          <Property Name="IDXeTrongBai" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ThoiGianVao" Type="DateTime" Precision="3" />
+          <Property Name="ThoiGianRa" Type="DateTime" Precision="3" />
+          <Property Name="IDTheGuiXe" Type="Int32" />
+          <Property Name="IDLoaiXe" Type="Int32" />
+          <Property Name="UrlAnh" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="LoaiXe" Relationship="QLBaiDoXeModel.FK_XeTrongBai_LoaiXe" FromRole="XeTrongBai" ToRole="LoaiXe" />
+          <NavigationProperty Name="TheGuiXe" Relationship="QLBaiDoXeModel.FK_XeTrongBai_TheGuiXe" FromRole="XeTrongBai" ToRole="TheGuiXe" />
+        </EntityType>
+        <Association Name="FK_HoaDon_LoaiThe">
+          <End Type="QLBaiDoXeModel.LoaiThe" Role="LoaiThe" Multiplicity="0..1" />
+          <End Type="QLBaiDoXeModel.HoaDon" Role="HoaDon" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LoaiThe">
+              <PropertyRef Name="IDLoaiThe" />
+            </Principal>
+            <Dependent Role="HoaDon">
+              <PropertyRef Name="IDTheGuiXe" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HoaDon_LoaiXe">
+          <End Type="QLBaiDoXeModel.LoaiXe" Role="LoaiXe" Multiplicity="0..1" />
+          <End Type="QLBaiDoXeModel.HoaDon" Role="HoaDon" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LoaiXe">
+              <PropertyRef Name="IDLoaiXe" />
+            </Principal>
+            <Dependent Role="HoaDon">
+              <PropertyRef Name="IDLoaiXe" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HoaDon_NhanVien">
+          <End Type="QLBaiDoXeModel.NhanVien" Role="NhanVien" Multiplicity="0..1" />
+          <End Type="QLBaiDoXeModel.HoaDon" Role="HoaDon" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NhanVien">
+              <PropertyRef Name="IDNhanVien" />
+            </Principal>
+            <Dependent Role="HoaDon">
+              <PropertyRef Name="IDNhanVien" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TheGuiXe_LoaiThe">
+          <End Type="QLBaiDoXeModel.LoaiThe" Role="LoaiThe" Multiplicity="0..1" />
+          <End Type="QLBaiDoXeModel.TheGuiXe" Role="TheGuiXe" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LoaiThe">
+              <PropertyRef Name="IDLoaiThe" />
+            </Principal>
+            <Dependent Role="TheGuiXe">
+              <PropertyRef Name="IDLoaiThe" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NhatKyRa_LoaiXe">
+          <End Type="QLBaiDoXeModel.LoaiXe" Role="LoaiXe" Multiplicity="0..1" />
+          <End Type="QLBaiDoXeModel.NhatKyRa" Role="NhatKyRa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LoaiXe">
+              <PropertyRef Name="IDLoaiXe" />
+            </Principal>
+            <Dependent Role="NhatKyRa">
+              <PropertyRef Name="IDLoaiXe" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NhatKyVao_LoaiXe">
+          <End Type="QLBaiDoXeModel.LoaiXe" Role="LoaiXe" Multiplicity="0..1" />
+          <End Type="QLBaiDoXeModel.NhatKyVao" Role="NhatKyVao" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LoaiXe">
+              <PropertyRef Name="IDLoaiXe" />
+            </Principal>
+            <Dependent Role="NhatKyVao">
+              <PropertyRef Name="IDLoaiXe" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_XeTrongBai_LoaiXe">
+          <End Type="QLBaiDoXeModel.LoaiXe" Role="LoaiXe" Multiplicity="0..1" />
+          <End Type="QLBaiDoXeModel.XeTrongBai" Role="XeTrongBai" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LoaiXe">
+              <PropertyRef Name="IDLoaiXe" />
+            </Principal>
+            <Dependent Role="XeTrongBai">
+              <PropertyRef Name="IDLoaiXe" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NhatKyRa_NhanVien">
+          <End Type="QLBaiDoXeModel.NhanVien" Role="NhanVien" Multiplicity="0..1" />
+          <End Type="QLBaiDoXeModel.NhatKyRa" Role="NhatKyRa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NhanVien">
+              <PropertyRef Name="IDNhanVien" />
+            </Principal>
+            <Dependent Role="NhatKyRa">
+              <PropertyRef Name="IDNhanVien" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NhatKyVao_NhanVien">
+          <End Type="QLBaiDoXeModel.NhanVien" Role="NhanVien" Multiplicity="0..1" />
+          <End Type="QLBaiDoXeModel.NhatKyVao" Role="NhatKyVao" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NhanVien">
+              <PropertyRef Name="IDNhanVien" />
+            </Principal>
+            <Dependent Role="NhatKyVao">
+              <PropertyRef Name="IDNhanVien" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NhatKyRa_TheGuiXe">
+          <End Type="QLBaiDoXeModel.TheGuiXe" Role="TheGuiXe" Multiplicity="0..1" />
+          <End Type="QLBaiDoXeModel.NhatKyRa" Role="NhatKyRa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TheGuiXe">
+              <PropertyRef Name="IDTheGuiXe" />
+            </Principal>
+            <Dependent Role="NhatKyRa">
+              <PropertyRef Name="IDTheGuiXe" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NhatKyVao_TheGuiXe">
+          <End Type="QLBaiDoXeModel.TheGuiXe" Role="TheGuiXe" Multiplicity="0..1" />
+          <End Type="QLBaiDoXeModel.NhatKyVao" Role="NhatKyVao" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TheGuiXe">
+              <PropertyRef Name="IDTheGuiXe" />
+            </Principal>
+            <Dependent Role="NhatKyVao">
+              <PropertyRef Name="IDTheGuiXe" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_XeThang_TheGuiXe">
+          <End Type="QLBaiDoXeModel.TheGuiXe" Role="TheGuiXe" Multiplicity="1" />
+          <End Type="QLBaiDoXeModel.XeThang" Role="XeThang" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TheGuiXe">
+              <PropertyRef Name="IDTheGuiXe" />
+            </Principal>
+            <Dependent Role="XeThang">
+              <PropertyRef Name="IDTheGuiXe" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_XeTrongBai_TheGuiXe">
+          <End Type="QLBaiDoXeModel.TheGuiXe" Role="TheGuiXe" Multiplicity="0..1" />
+          <End Type="QLBaiDoXeModel.XeTrongBai" Role="XeTrongBai" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TheGuiXe">
+              <PropertyRef Name="IDTheGuiXe" />
+            </Principal>
+            <Dependent Role="XeTrongBai">
+              <PropertyRef Name="IDTheGuiXe" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Quyen">
+          <Key>
+            <PropertyRef Name="IDQuyen" />
+          </Key>
+          <Property Name="IDQuyen" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TenQuyen" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="MoTa" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="QLBaiDoXeModelStoreContainer" CdmEntityContainer="QLBaiDoXeEntities">
+          <EntitySetMapping Name="HoaDons">
+            <EntityTypeMapping TypeName="QLBaiDoXeModel.HoaDon">
+              <MappingFragment StoreEntitySet="HoaDon">
+                <ScalarProperty Name="MoTa" ColumnName="MoTa" />
+                <ScalarProperty Name="IDTheGuiXe" ColumnName="IDTheGuiXe" />
+                <ScalarProperty Name="IDNhanVien" ColumnName="IDNhanVien" />
+                <ScalarProperty Name="IDLoaiXe" ColumnName="IDLoaiXe" />
+                <ScalarProperty Name="BienSoXe" ColumnName="BienSoXe" />
+                <ScalarProperty Name="TongTien" ColumnName="TongTien" />
+                <ScalarProperty Name="ThoiGian" ColumnName="ThoiGian" />
+                <ScalarProperty Name="IDHoaDon" ColumnName="IDHoaDon" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LoaiThes">
+            <EntityTypeMapping TypeName="QLBaiDoXeModel.LoaiThe">
+              <MappingFragment StoreEntitySet="LoaiThe">
+                <ScalarProperty Name="MoTa" ColumnName="MoTa" />
+                <ScalarProperty Name="TenLoaiThe" ColumnName="TenLoaiThe" />
+                <ScalarProperty Name="IDLoaiThe" ColumnName="IDLoaiThe" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LoaiXes">
+            <EntityTypeMapping TypeName="QLBaiDoXeModel.LoaiXe">
+              <MappingFragment StoreEntitySet="LoaiXe">
+                <ScalarProperty Name="DonGia" ColumnName="DonGia" />
+                <ScalarProperty Name="MoTa" ColumnName="MoTa" />
+                <ScalarProperty Name="TenLoaiXe" ColumnName="TenLoaiXe" />
+                <ScalarProperty Name="IDLoaiXe" ColumnName="IDLoaiXe" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NhanViens">
+            <EntityTypeMapping TypeName="QLBaiDoXeModel.NhanVien">
+              <MappingFragment StoreEntitySet="NhanVien">
+                <ScalarProperty Name="IDQuyen" ColumnName="IDQuyen" />
+                <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />
+                <ScalarProperty Name="SinhNhat" ColumnName="SinhNhat" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="SDT" ColumnName="SDT" />
+                <ScalarProperty Name="HoTen" ColumnName="HoTen" />
+                <ScalarProperty Name="MatKhau" ColumnName="MatKhau" />
+                <ScalarProperty Name="IDNhanVien" ColumnName="IDNhanVien" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NhatKyRas">
+            <EntityTypeMapping TypeName="QLBaiDoXeModel.NhatKyRa">
+              <MappingFragment StoreEntitySet="NhatKyRa">
+                <ScalarProperty Name="Urlanh" ColumnName="Urlanh" />
+                <ScalarProperty Name="IDNhanVien" ColumnName="IDNhanVien" />
+                <ScalarProperty Name="IDTheGuiXe" ColumnName="IDTheGuiXe" />
+                <ScalarProperty Name="IDLoaiXe" ColumnName="IDLoaiXe" />
+                <ScalarProperty Name="BienSoXe" ColumnName="BienSoXe" />
+                <ScalarProperty Name="ThoiGian" ColumnName="ThoiGian" />
+                <ScalarProperty Name="IDNhatKyRa" ColumnName="IDNhatKyRa" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NhatKyVaos">
+            <EntityTypeMapping TypeName="QLBaiDoXeModel.NhatKyVao">
+              <MappingFragment StoreEntitySet="NhatKyVao">
+                <ScalarProperty Name="Urlanh" ColumnName="Urlanh" />
+                <ScalarProperty Name="IDNhanVien" ColumnName="IDNhanVien" />
+                <ScalarProperty Name="IDTheGuiXe" ColumnName="IDTheGuiXe" />
+                <ScalarProperty Name="IDLoaiXe" ColumnName="IDLoaiXe" />
+                <ScalarProperty Name="BienSoXe" ColumnName="BienSoXe" />
+                <ScalarProperty Name="ThoiGian" ColumnName="ThoiGian" />
+                <ScalarProperty Name="IDNhatKyVao" ColumnName="IDNhatKyVao" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="QLBaiDoXeModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TheGuiXes">
+            <EntityTypeMapping TypeName="QLBaiDoXeModel.TheGuiXe">
+              <MappingFragment StoreEntitySet="TheGuiXe">
+                <ScalarProperty Name="IDLoaiThe" ColumnName="IDLoaiThe" />
+                <ScalarProperty Name="DangSuDung" ColumnName="DangSuDung" />
+                <ScalarProperty Name="MoTa" ColumnName="MoTa" />
+                <ScalarProperty Name="NgayHetHan" ColumnName="NgayHetHan" />
+                <ScalarProperty Name="NgayCap" ColumnName="NgayCap" />
+                <ScalarProperty Name="IDTheGuiXe" ColumnName="IDTheGuiXe" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="XeThangs">
+            <EntityTypeMapping TypeName="QLBaiDoXeModel.XeThang">
+              <MappingFragment StoreEntitySet="XeThang">
+                <ScalarProperty Name="TongTien" ColumnName="TongTien" />
+                <ScalarProperty Name="MoTa" ColumnName="MoTa" />
+                <ScalarProperty Name="UrlAnh" ColumnName="UrlAnh" />
+                <ScalarProperty Name="NgayHetHan" ColumnName="NgayHetHan" />
+                <ScalarProperty Name="NgayDangKy" ColumnName="NgayDangKy" />
+                <ScalarProperty Name="BienSo" ColumnName="BienSo" />
+                <ScalarProperty Name="IDTheGuiXe" ColumnName="IDTheGuiXe" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="XeTrongBais">
+            <EntityTypeMapping TypeName="QLBaiDoXeModel.XeTrongBai">
+              <MappingFragment StoreEntitySet="XeTrongBai">
+                <ScalarProperty Name="UrlAnh" ColumnName="UrlAnh" />
+                <ScalarProperty Name="IDLoaiXe" ColumnName="IDLoaiXe" />
+                <ScalarProperty Name="IDTheGuiXe" ColumnName="IDTheGuiXe" />
+                <ScalarProperty Name="ThoiGianRa" ColumnName="ThoiGianRa" />
+                <ScalarProperty Name="ThoiGianVao" ColumnName="ThoiGianVao" />
+                <ScalarProperty Name="IDXeTrongBai" ColumnName="IDXeTrongBai" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Quyens">
+            <EntityTypeMapping TypeName="QLBaiDoXeModel.Quyen">
+              <MappingFragment StoreEntitySet="Quyen">
+                <ScalarProperty Name="MoTa" ColumnName="MoTa" />
+                <ScalarProperty Name="TenQuyen" ColumnName="TenQuyen" />
+                <ScalarProperty Name="IDQuyen" ColumnName="IDQuyen" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

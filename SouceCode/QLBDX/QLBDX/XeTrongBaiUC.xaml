@@ -1,0 +1,127 @@
+﻿<UserControl x:Class="QLBDX.XeTrongBaiUC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:QLBDX"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             mc:Ignorable="d" 
+            TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+            TextElement.FontWeight="Regular"
+            TextElement.FontSize="13"
+            TextOptions.TextFormattingMode="Ideal"
+            TextOptions.TextRenderingMode="Auto"
+            Background="{DynamicResource MaterialDesignPaper}"
+            FontFamily="{DynamicResource MaterialDesignFont}"
+             d:DesignHeight="600" d:DesignWidth="1200" Loaded="UserControl_Loaded"
+             >
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <!--<uc:ControlBarUC Tag="{Binding Title,ElementName=loginWindow}"></uc:ControlBarUC>-->
+        </Grid>
+        <Grid Grid.Row="1" Margin="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition Height="auto"></RowDefinition>
+            </Grid.RowDefinitions>
+            <materialDesign:Card Grid.Row="0" Margin="5">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+   
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <TextBox Grid.Column="0"
+                        Margin="5"
+                        x:Name="txtIDXeTrongBai"
+                        materialDesign:HintAssist.Hint="Biển số xe"
+                        Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                  
+                    <ComboBox Grid.Column="1" Margin="0 0 0 -9" materialDesign:HintAssist.Hint="Mã thẻ" 
+                              x:Name="cboTheGuiXe" DisplayMemberPath="IDTheGuiXe"
+                              SelectedValuePath="IDTheGuiXe">
+                    </ComboBox>
+                    <ComboBox Grid.Column="2" Margin="0 0 0 -9" materialDesign:HintAssist.Hint="Loại xe" 
+                              x:Name="cboLoaiXe" DisplayMemberPath="IDTenLoaiXe"
+                              SelectedValuePath="IDLoaiXe">
+                    </ComboBox>
+                    <TextBox Grid.Column="3"
+                             MouseDoubleClick="TxtUrlAnh_MouseDoubleClick"
+                        Margin="5"
+                        x:Name="txtUrlAnh"
+                        materialDesign:HintAssist.Hint="Url ảnh"
+                        Style="{StaticResource MaterialDesignFloatingHintTextBox}"  />
+                    <DatePicker Grid.Column="4"
+                        x:Name="pdThoiGianVao"
+                        Width="100"
+                        materialDesign:HintAssist.Hint="Thời gian vào"
+                        Style="{StaticResource MaterialDesignFloatingHintDatePicker}" SelectedDateFormat="Long" />
+                </Grid>
+            </materialDesign:Card>
+            <materialDesign:Card Grid.Row="1" Margin="5">
+                <WrapPanel>
+                    <Button x:Name="btnTimKiem" Content="Tìm kiếm" Margin="5" Width="100" Click="BtnTimKiem_Click"></Button>
+                    <TextBox Width="200"
+                        Margin="5"
+                        x:Name="txtTimKiem"
+                        materialDesign:HintAssist.Hint="Tìm kiếm"
+                        Style="{StaticResource MaterialDesignFloatingHintTextBox}"  />
+                </WrapPanel>
+            </materialDesign:Card>
+
+            <Grid Grid.Row="2">
+                <ScrollViewer HorizontalScrollBarVisibility="Visible">
+                    <ListView x:Name="lsData" HorizontalAlignment="Stretch" VerticalAlignment="Top" MouseLeftButtonUp="LsData_MouseLeftButtonUp" >
+                        <ListView.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <StackPanel Orientation="Horizontal"></StackPanel>
+                            </ItemsPanelTemplate>
+                        </ListView.ItemsPanel>
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <materialDesign:Card Width="200">
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="auto" />
+                                            <RowDefinition Height="*" />
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="Auto" />
+                                        </Grid.RowDefinitions>
+                                        <Image Source="{Binding UrlAnh }"  Height="100" Width="200" Stretch="UniformToFill" />
+                                        <Button Grid.Row="0" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" HorizontalAlignment="Right"
+                                            VerticalAlignment="Bottom" Margin="0 0 16 -20">
+                                            <materialDesign:PackIcon Kind="ShareVariant" />
+                                        </Button>
+                                        <StackPanel Grid.Row="1" Margin="8 24 8 4">
+                                            <TextBlock Style="{StaticResource MaterialDesignSubheadingTextBlock}" Margin="0" Text="{Binding TenSanPham}">
+                                            </TextBlock>
+                                            <Viewbox Margin="0 4 0 8" Height="16" HorizontalAlignment="Left">
+                                                <materialDesign:RatingBar Value="3" Orientation="Horizontal" Foreground="Gold" Margin="0" />
+                                            </Viewbox>
+                                            <TextBlock Text="{Binding IDXeTrongBai}" Foreground="Red"  Style="{StaticResource MaterialDesignBody1TextBlock}" TextWrapping="Wrap" VerticalAlignment="Center">
+                                            </TextBlock>
+                                            <TextBlock Text="{Binding LoaiXe.TenLoaiXe}" Style="{StaticResource MaterialDesignBody1TextBlock}" TextWrapping="Wrap" VerticalAlignment="Center">
+                                            </TextBlock>
+                                            <TextBlock Text="{Binding IDTheGuiXe}" Style="{StaticResource MaterialDesignBody1TextBlock}" TextWrapping="Wrap" VerticalAlignment="Center">
+                                            </TextBlock>
+                                        </StackPanel>
+                                    </Grid>
+                                </materialDesign:Card>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </ScrollViewer>
+            </Grid>
+        </Grid>
+    </Grid>
+</UserControl>

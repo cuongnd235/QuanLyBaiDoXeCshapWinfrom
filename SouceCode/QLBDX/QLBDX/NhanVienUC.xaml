@@ -1,0 +1,139 @@
+﻿<UserControl x:Class="QLBDX.NhanVienUC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:QLBDX"
+             mc:Ignorable="d" 
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+             TextElement.FontWeight="Regular"
+             TextElement.FontSize="13"
+             TextOptions.TextFormattingMode="Ideal"
+             TextOptions.TextRenderingMode="Auto"
+             Background="{DynamicResource MaterialDesignPaper}"
+             FontFamily="{DynamicResource MaterialDesignFont}"
+             d:DesignHeight="600" d:DesignWidth="1200" Loaded="UserControl_Loaded">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition ></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <!--<uc:ControlBarUC Tag="{Binding Title,ElementName=loginWindow}"></uc:ControlBarUC>-->
+        </Grid>
+        <Grid Grid.Row="1" Margin="1" Width="auto">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition Height="auto"></RowDefinition>
+            </Grid.RowDefinitions>
+            <materialDesign:Card Grid.Row="0" Margin="5">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <TextBox Grid.Column="0"
+                    Margin="5"
+                    x:Name="txtIDNhanVien"
+                    materialDesign:HintAssist.Hint="Mã nhân viên"
+                    Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                    <TextBox Grid.Column="1"
+                    Margin="5"
+                    x:Name="txtHoTen"                      
+                    materialDesign:HintAssist.Hint="Họ và tên"
+                    Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                    <TextBox Grid.Column="2"
+                    Margin="5"
+                    x:Name="txtSDT"
+                    materialDesign:HintAssist.Hint="Số điện thoại"
+                    Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                    <TextBox Grid.Column="3"
+                    Margin="5"
+                    x:Name="txtEmail"
+                    materialDesign:HintAssist.Hint="Email"
+                    Style="{StaticResource MaterialDesignFloatingHintTextBox}"  />
+                    <TextBox Grid.Column="4"
+                    Margin="5"
+                    x:Name="txtDiaChi"
+                    materialDesign:HintAssist.Hint="Địa chỉ"
+                    Style="{StaticResource MaterialDesignFloatingHintTextBox}"  />
+                    <TextBox Grid.Column="5"
+                    Margin="5"
+                    x:Name="txtMatKhau"
+                    materialDesign:HintAssist.Hint="Mật khẩu"
+                    Style="{StaticResource MaterialDesignFloatingHintTextBox}"  />
+                    
+                    <DatePicker Grid.Column="6"
+                        x:Name="pdSinhNhat"
+                        Width="100"
+                        materialDesign:HintAssist.Hint="Sinh nhật"
+                        Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
+                    
+                    <ComboBox Grid.Column="7" Margin="0 0 0 -9" materialDesign:HintAssist.Hint="Quyền" 
+                              x:Name="cboQuyen" IsSynchronizedWithCurrentItem="False" DisplayMemberPath="Tên quyền" 
+                              SelectedValuePath="IDQuyen" />
+                    <!--<TextBox Grid.Column="7"
+                    Margin="5"
+                    x:Name="txtQuyen"
+                    materialDesign:HintAssist.Hint="Mật khẩu"
+                    Style="{StaticResource MaterialDesignFloatingHintTextBox}"  />-->
+
+                </Grid>
+            </materialDesign:Card>
+            <materialDesign:Card Grid.Row="1" Margin="5">
+                <WrapPanel>
+                    <Button x:Name="btnThem" Content="Thêm" Margin="5" Width="100" Click="BtnThem_Click"></Button>
+                    <Button x:Name="btnSua" Content="Sửa" Margin="5" Width="100"  Click="BtnSua_Click"></Button>
+                    <Button x:Name="btnXoa" Content="Xóa" Margin="5" Width="100" Click="BtnXoa_Click"></Button>
+                    <Button x:Name="btnLuu" Content="Lưu" Margin="5" Width="100" Click="BtnLuu_Click" ></Button>
+                    <Button x:Name="btnHuy" Content="Hủy" Margin="5" Width="100" Click="BtnHuy_Click" ></Button>
+                </WrapPanel>
+            </materialDesign:Card>
+            <materialDesign:Card Grid.Row="2" Margin="5">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto"></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <WrapPanel>
+                        <Button x:Name="btnTimKiem" Content="Tìm kiếm" Margin="5" Width="100" Grid.Column="1" Click="BtnTimKiem_Click"></Button>
+                        <TextBox Grid.Column="0"
+                    Margin="5"
+                    x:Name="txtTimKiem"
+                                 Width="400"
+                    materialDesign:HintAssist.Hint="Tìm kiếm"
+                    Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                    </WrapPanel>
+                </Grid>
+            </materialDesign:Card>
+            <materialDesign:Card Grid.Row="3" Margin="5" VerticalAlignment="Stretch">
+                <ScrollViewer VerticalScrollBarVisibility="Visible">
+                    <ListView x:Name="lsvData"  PreviewMouseLeftButtonUp ="LsvData_PreviewMouseLeftButtonUp">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="Mã nhân viên" DisplayMemberBinding="{Binding IDNhanVien}"></GridViewColumn>
+                                <GridViewColumn Header="Họ và tên" DisplayMemberBinding="{Binding HoTen}"></GridViewColumn>
+                                <GridViewColumn Header="Số điện thoại" DisplayMemberBinding="{Binding SDT}"></GridViewColumn>
+                                <GridViewColumn Header="Email" DisplayMemberBinding="{Binding Email}"></GridViewColumn>
+                                <GridViewColumn Header="Địa chỉ" DisplayMemberBinding="{Binding DiaChi}"></GridViewColumn>
+                                <GridViewColumn Header="Mật khẩu" DisplayMemberBinding="{Binding MatKhau}"></GridViewColumn>
+                                <GridViewColumn Header="Sinh nhật" DisplayMemberBinding="{Binding SinhNhat}"></GridViewColumn>
+                                <GridViewColumn Header="Quyền" DisplayMemberBinding="{Binding Quyen.TenQuyen}"></GridViewColumn>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                </ScrollViewer>
+            </materialDesign:Card>
+
+        </Grid>
+    </Grid>
+</UserControl>
